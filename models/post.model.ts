@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, Types } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import { IPost } from '@/types/post';
 
 const PostSchema = new Schema<IPost>(
@@ -19,7 +19,7 @@ const PostSchema = new Schema<IPost>(
     },
   },
   { timestamps: true }
-)
+);
 
-export const PostModel =
+export const PostModel = mongoose.models.Post || mongoose.model<IPost>('Post', PostSchema);
   mongoose.models.Post || mongoose.model<IPost>('Post', PostSchema);
